@@ -3,9 +3,7 @@ let counter = null;
 const elGridWrapper = document.querySelector(".grid-wrapper");
 let elDivs = [];
 
-let inputDim = prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )");
-
-inputDim = Number.parseInt(inputDim);
+let inputDim = Number(prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )"));
 
 const changeBgColor = (e) => {
   let selectedTile = e.target;

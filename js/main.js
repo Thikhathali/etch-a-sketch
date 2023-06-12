@@ -9,11 +9,12 @@ inputDim = Number.parseInt(inputDim);
 
 const changeBgColor = (e) => {
   let selectedTile = e.target;
+  const selectedMode = document.querySelector(".modes");
 
   const colors = () => {
     const RANDOM = Math.floor(Math.random() * 3);
     const arr = ["red", "green", "blue"];
-    return arr[RANDOM];
+    selectedTile.style.backgroundColor = arr[RANDOM];
   }
 
   const gradient = () => {
@@ -23,9 +24,16 @@ const changeBgColor = (e) => {
   }
   
   if (selectedTile.style.backgroundColor === "rgb(255, 255, 255)") {
-    gradient();
-    // selectedTile.style.backgroundColor = "#f2f2f2";
-    // selectedTile.style.backgroundColor = colors();
+    switch(selectedMode.value){
+      case 'gradient':
+          gradient();
+        break;
+      case 'rgb':
+          colors();
+        break;
+      default: 
+          selectedTile.style.backgroundColor = "#f2f2f2";
+    }
   } else {
     selectedTile.style.backgroundColor = "#fff";
   }

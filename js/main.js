@@ -3,22 +3,28 @@ let counter = null;
 const elGridWrapper = document.querySelector(".grid-wrapper");
 let elDivs = [];
 
-let inputDim = prompt("Enter grid dimensions","eg, 16 × 16");
+let inputDim = prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )");
 
 inputDim = Number.parseInt(inputDim);
 
-log(typeof(inputDim));
-
-const colors = () => {
-  const arr = ["red", "green", "blue"];
-  return arr[Math.floor(Math.random() * 3)];
-}
-
 const changeBgColor = (e) => {
   let selectedTile = e.target;
+
+  const colors = () => {
+    const RANDOM = Math.floor(Math.random() * 3);
+    const arr = ["red", "green", "blue"];
+    return arr[RANDOM];
+  }
+
+  const gradient = () => {
+    selectedTile.style.backgroundColor = `rgba(0, 0, 0, 
+      ${counter += 0.1})`;
+      if(counter >= 1.0) counter = null;
+  }
   
   if (selectedTile.style.backgroundColor === "rgb(255, 255, 255)") {
-    selectedTile.style.backgroundColor = "#f2f2f2";
+    gradient();
+    // selectedTile.style.backgroundColor = "#f2f2f2";
     // selectedTile.style.backgroundColor = colors();
   } else {
     selectedTile.style.backgroundColor = "#fff";
@@ -34,7 +40,7 @@ for(let i = 0; i < (inputDim * inputDim); i++){
 
 elDivs.forEach((divs, i) => {
   divs.setAttribute("id", `id-${i}`);    
-  divs.textContent = "div " + (i + 1);  
+  // divs.textContent = "div " + (i + 1);  
   divs.addEventListener("mouseover", changeBgColor);
   elGridWrapper.appendChild(divs);
 });

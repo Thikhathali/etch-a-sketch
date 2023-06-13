@@ -1,9 +1,17 @@
 const log = console.log;
 let counter = null;
 const elGridWrapper = document.querySelector(".grid-wrapper");
+const elChangeGrid = document.querySelector("button#change-grid");
 let elDivs = [];
+var inputDim = 16;
 
-let inputDim = Number(prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )"));
+const changeGrid = () => {
+  reRenderGrid();
+  let newInputDim = Number(prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )"));
+  renderGrid(newInputDim);
+}
+
+elChangeGrid.addEventListener("click", changeGrid);
 
 const changeBgColor = (e) => {
   let selectedTile = e.target;
@@ -37,17 +45,25 @@ const changeBgColor = (e) => {
   }
 }
 
-elGridWrapper.style.gridTemplateRows = `repeat(${inputDim}, 1fr)`;
-elGridWrapper.style.gridTemplateColumns = `repeat(${inputDim}, 1fr)`;
+const renderGrid = (dim) => {
+  elGridWrapper.style.gridTemplateRows = `repeat(${dim}, 1fr)`;
+  elGridWrapper.style.gridTemplateColumns = `repeat(${dim}, 1fr)`;
 
-for(let i = 0; i < (inputDim * inputDim); i++){
-  elDivs.push(document.createElement("div"));
+  for(let i = 0; i < (dim * dim); i++){
+    elDivs.push(document.createElement("div"));
+  }
+
+  elDivs.forEach((divs, i) => {
+    divs.setAttribute("id", `id-${i}`);    
+    divs.addEventListener("mouseover", changeBgColor);
+    elGridWrapper.appendChild(divs);
+  });
 }
 
-elDivs.forEach((divs, i) => {
-  divs.setAttribute("id", `id-${i}`);    
-  // divs.textContent = "div " + (i + 1);  
-  divs.addEventListener("mouseover", changeBgColor);
-  elGridWrapper.appendChild(divs);
-});
+const reRenderGrid = () => {
+  elDivs = [];
+  elGridWrapper.innerHTML = "";
+}
+
+renderGrid(inputDim);
 

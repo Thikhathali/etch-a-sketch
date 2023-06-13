@@ -7,7 +7,7 @@ var inputDim = 16;
 
 const changeGrid = () => {
   reRenderGrid();
-  let newInputDim = Number(prompt("Enter grid dimensions","eg, 16 ( 16 × 16 )"));
+  let newInputDim = Number(prompt("Enter grid dimensions","eg, 16 ( 16 × 16 ) | max 100"));
   renderGrid(newInputDim);
 }
 

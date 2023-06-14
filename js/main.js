@@ -40,7 +40,7 @@ const changeGrid = () => {
   setTimeout(() => {
     elInfo.classList.remove("success");
     elDivInfo.style.color = "rgb(196, 196, 196)";
-  }, 3000);
+  }, 2000);
 
   renderGrid(newInputDim);
 }
@@ -70,7 +70,7 @@ const changeBgColor = (e) => {
           colors();
         break;
       default: 
-          selectedTile.style.backgroundColor = "#f2f2f2";
+          selectedTile.style.backgroundColor = "#b5b5b5";
     }
   } else {
     selectedTile.style.backgroundColor = "#fff";

@@ -9,7 +9,6 @@ body{
 }
 
 .header {
-  /* position: fixed; */
   height: 10vh;
   text-align: center;
   padding-top: 25px;
@@ -20,8 +19,8 @@ body{
   flex-direction: column;
   float: left;
   width: 20vh;
-  height: 69vh;
-  padding: 50px;
+  height: 78vh;
+  padding: 0 50px;
   border-right: 1px solid #000;
 }
 
@@ -48,10 +47,8 @@ button:hover {
 
 .grid-wrapper {
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
   width: 60vw;
   height: 40vw;
-  /* float: right; */
   margin-left: 22vw;
   border: 1px solid #000;
   border-radius: 10px;
@@ -61,8 +58,7 @@ button:hover {
 
 .grid-wrapper > div{
   background-color: #ffff;
-  /* height: 100px; */
-  border: .1em solid #f1f1f1; 
+  border: .1em solid #b5b5b5; 
   border-radius: 10px;
 }
 

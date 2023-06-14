@@ -2,13 +2,46 @@ const log = console.log;
 let counter = null;
 const elGridWrapper = document.querySelector(".grid-wrapper");
 const elChangeGrid = document.querySelector("button#change-grid");
+
+const elInfo = document.querySelector(".info");
+let elPTag = elInfo.lastChild.previousSibling;
+let elDivInfo = elInfo.firstChild.nextSibling;
+
 let elDivs = [];
 var inputDim = 16;
 
+const showInfo = () => {
+  setTimeout(() => {
+    elInfo.style.transform = "translateY(200px)";
+  }, 2000);
+
+  elInfo.style.transform = "translateY(0)";
+}
+
 const changeGrid = () => {
   reRenderGrid();
+
   let newInputDim = Number(prompt("Enter grid dimensions","eg, 16" +
   " ( 16 × 16 ) | min: 8 | max: 100"));
+
+  if(!Number(newInputDim) || newInputDim < 8 || newInputDim > 100) {
+    showInfo();
+    elPTag.style.color = "#fff";
+    elPTag.textContent = "Enter a valid number!";
+    renderGrid(inputDim);
+    return;
+  } 
+
+  showInfo();
+  elInfo.classList.add("success");
+  elDivInfo.style.color = "green";
+  elPTag.textContent = "Grid has been loaded!";
+
+  setTimeout(() => {
+    elInfo.classList.remove("success");
+    elDivInfo.style.color = "rgb(196, 196, 196)";
+  }, 3000);
+
   renderGrid(newInputDim);
 }
 

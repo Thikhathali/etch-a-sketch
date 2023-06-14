@@ -21,8 +21,8 @@ const showInfo = () => {
 const changeGrid = () => {
   reRenderGrid();
 
-  let newInputDim = Number(prompt("Enter grid dimensions","eg, 16" +
-  " ( 16 × 16 ) | min: 8 | max: 100"));
+  let newInputDim = Number(prompt("Enter Grid Dimensions","eg, 16" +
+  " ( 16 × 16 ) | Min: 8 | Max: 100"));
 
   if(!Number(newInputDim) || newInputDim < 8 || newInputDim > 100) {
     showInfo();

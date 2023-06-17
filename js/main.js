@@ -1,7 +1,10 @@
 const log = console.log;
 let counter = null;
 const elGridWrapper = document.querySelector(".grid-wrapper");
+const elGridWrapperDivs = document.querySelector(".grid-wrapper > div");
 const elChangeGrid = document.querySelector("button#change-grid");
+const elGridVisible = document.querySelector("#grid-visible");
+const elEraseImg = document.querySelector(".config > img");
 
 const elInfo = document.querySelector(".info");
 let elPTag = elInfo.lastChild.previousSibling;
@@ -20,6 +23,7 @@ const showInfo = () => {
 
 const changeGrid = () => {
   reRenderGrid();
+  elGridVisible.style.color = "#000";
 
   let newInputDim = Number(prompt("Enter Grid Dimensions","eg, 16" +
   " ( 16 × 16 ) | Min: 8 | Max: 100"));
@@ -87,7 +91,7 @@ const renderGrid = (dim) => {
 
   elDivs.forEach((divs, i) => {
     divs.setAttribute("id", `id-${i}`);    
-    divs.addEventListener("mouseover", changeBgColor);
+    divs.addEventListener("mouseenter", changeBgColor);
     elGridWrapper.appendChild(divs);
   });
 }
@@ -97,7 +101,29 @@ const reRenderGrid = () => {
   elGridWrapper.innerHTML = "";
 }
 
+const divIterate = (grid, border) => {
+  let counter = 0;
+  while( counter < grid.length) {
+    grid[counter].style.border = border;
+    counter++;
+  }
+}
+
+const eraseGrid = () => {
+  elDivs.map(divs => divs.style.backgroundColor = "#fff");
+}
+
+elEraseImg.addEventListener("click", eraseGrid);
 elChangeGrid.addEventListener("click", changeGrid);
 
-renderGrid(inputDim);
+elGridVisible.addEventListener("click", (e) => {
+  if(e.target.style.color === "grey"){
+      e.target.style.color = "black"
+      divIterate(elGridWrapper.children, "");
+  }else {
+    e.target.style.color = "grey"
+    divIterate(elGridWrapper.children, ".1em solid #b5b5b5");
+  }
+});
 
+renderGrid(inputDim);

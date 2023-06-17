@@ -4,30 +4,35 @@
 }
 
 body{
-  font-family: monospace;
+  font-family: 'Common Pixel', monospace;
   background-color: #fff;
 }
 
 .header {
   height: 10vh;
+  font-size: 2em;
   text-align: center;
-  padding-top: 25px;
+  padding-top: 65px;
 }
 
 .config {
-  display: flex;
-  flex-direction: column;
-  float: left;
-  width: 20vh;
-  height: 78vh;
-  padding: 0 50px;
-  border-right: 1px solid #000;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 20vh;
+    height: 78vh;
+    padding: 0 50px;
+    border-right: 1px solid #000;
+    margin-left: 10vw;
 }
 
 button#change-grid {
   height: 40px;
+  text-align: left;
   letter-spacing: 3px;
   text-transform: uppercase;
+  padding-left: 15px;
   margin-bottom: 20px;
   cursor: pointer;
   transition: all .2s ease-in-out;
@@ -35,6 +40,16 @@ button#change-grid {
 
 button:hover {
   scale: 1.1;
+}
+
+.config #grid-visible {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.config > img {
+  width: 40px;
+  cursor: pointer;
 }
 
 .modes {
@@ -47,20 +62,21 @@ button:hover {
 }
 
 .grid-wrapper {
-  display: grid;
-  width: 60vw;
-  height: 40vw;
-  margin-left: 22vw;
-  border: 1px solid #000;
-  border-radius: 10px;
-  cursor: pointer;
-  overflow-y: hidden;
+    display: grid;
+    width: 40vw;
+    height: 30vw;
+    margin: 0 30vw auto;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow-y: hidden;
 }
 
 .grid-wrapper > div{
   background-color: #ffff;
-  border: .1em solid #b5b5b5; 
-  border-radius: 10px;
+  /* border: .1px solid #b5b5b5;  */
+  /* border-radius: 10px; */
 }
 
 .info {
@@ -69,6 +85,7 @@ button:hover {
   justify-content: center;
   position: fixed;
   background-color: rgb(196, 196, 196);
+  font-family: monospace;
   font-size: 1.1em;
   width: 290px;
   height: 100px;
